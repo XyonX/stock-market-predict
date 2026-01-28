@@ -21,6 +21,7 @@ export default function StockPredictor() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
+
   const handlePredict = async () => {
     if (!symbol.trim()) {
       setError("Please enter a stock symbol")
@@ -32,7 +33,7 @@ export default function StockPredictor() {
     setResult(null)
 
     try {
-      const response = await fetch("https://backend.aiverseapp.site/market-predict/predict", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
